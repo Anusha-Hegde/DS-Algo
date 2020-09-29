@@ -1,3 +1,6 @@
+package largest_item_association;
+
+
 import java.util.*;
 
 public class LargestItemAssociation{
