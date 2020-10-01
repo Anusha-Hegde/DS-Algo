@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class MaxEqual {
     public int findMaxLength(int[] nums) {
         
