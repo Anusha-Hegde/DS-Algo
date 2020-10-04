@@ -15,11 +15,4 @@ public class Analysis2 {
         }
         return res;
     }
-
-    public static void main(String[] args) {
-        Analysis2 obj = new Analysis2();
-        int[] nums = {1, 2, 4, 6, 3, 2};
-        int[] res = obj.maxSlidingWindow(nums, 3);
-        for(int i : res) System.out.println(i);
-    }
 }
