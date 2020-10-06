@@ -6,47 +6,52 @@ public class Main {
 
     List<Integer> res = new ArrayList<>();
     int count;
+    int K;
+    TreeNode target;
 
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
 
-        find1(root, target, K);
+        this.target = target;
+        this.K = K;
+
+        find1(root);
 
         return res;
     }
 
-    public int find1(TreeNode node, TreeNode target, int K) {
+    public int find1(TreeNode node) {
 
         if (node == null)
-            return -1;
+            return 0;
 
         if (node == target) {
-            find2(node, target, K, 0);
-            return 0;
+            find2(node, 0);
+            return 1;
         }
 
-        count = find1(node.right, target, K);
-        if (count >= 0) {
-            if (count == K - 1)
+        count = find1(node.right);
+        if (count > 0) {
+            if (count == K)
                 res.add(node.val);
-            else
-                find2(node.left, target, K, count + 2);
+            if (count < K)
+                find2(node.left, count + 1);
             return count + 1;
         }
 
-        count = find1(node.left, target, K);
-        if (count >= 0) {
-            if (count == K - 1)
+        count = find1(node.left);
+        if (count > 0) {
+            if (count < K)
+                find2(node.right, count + 1);
+            if (count == K)
                 res.add(node.val);
-            else
-                find2(node.right, target, K, count + 2);
             return count + 1;
         }
 
-        return -1;
+        return 0;
 
     }
 
-    public void find2(TreeNode node, TreeNode target, int K, int length) {
+    public void find2(TreeNode node, int length) {
 
         if (node == null || length > K)
             return;
@@ -54,7 +59,7 @@ public class Main {
         if (length == K)
             res.add(node.val);
 
-        find2(node.right, target, K, length + 1);
-        find2(node.left, target, K, length + 1);
+        find2(node.right, length + 1);
+        find2(node.left, length + 1);
     }
 }
