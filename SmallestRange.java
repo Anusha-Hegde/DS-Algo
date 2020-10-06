@@ -27,7 +27,9 @@ Explanation: B = [4,6,3]
 
 */
 
-class Solution {
+import java.util.*;
+
+class SmallestRange {
     public int smallestRangeII(int[] A, int K) {
         
         Arrays.sort(A);
