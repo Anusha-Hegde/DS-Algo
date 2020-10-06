@@ -2,7 +2,6 @@ package hackerRank;
 
 import java.util.*;
 
-
 /*
 
 Given an Array, find if it is a palindrome after performing the following operations atleat once:
@@ -17,6 +16,8 @@ if it cannot form a palindrome after above operations return 0;
 
 public class Avengers {
 
+    static int[] arr;
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in).useDelimiter("\n");
@@ -24,7 +25,7 @@ public class Avengers {
         System.out.println("Enter array length");
         int n = sc.nextInt();
 
-        int[] arr = new int[n];
+        arr = new int[n];
 
         System.out.println("Enter the array elements");
         String num = sc.next();
@@ -32,38 +33,45 @@ public class Avengers {
         sc.close();
 
         int count = 0;
-        for(String i : num.split(" ")) arr[count++] = Integer.parseInt(i);
+        for (String i : num.split(" "))
+            arr[count++] = Integer.parseInt(i);
 
         int flag = 0;
 
-        System.out.println(palindrome(arr, n, flag));
+        System.out.println(palindrome(0, arr.length - 1, flag));
 
     }
 
-    public static int palindrome(int[] arr, int n, int flag){
+    public static int palindrome(int i, int j, int flag) {
 
-        if(n == 0 || n == 1) return flag;
+        if (i == j)
+            return flag;
 
-        if(arr[0] == arr[n - 1]){
-            if(arr.length == 2) return flag;
-            return palindrome(Arrays.copyOfRange(arr, 1, n - 1), n - 2, flag);
+        if (arr[i] == arr[j]) {
+            if (j - i == 1)
+                return flag;
+            return palindrome(i + 1, j - 1, flag);
         }
 
-        if(arr[0] + arr[1] == arr[n - 1]){
-            if(arr.length == 3) return flag + 1;
-            return palindrome(Arrays.copyOfRange(arr, 2, n - 1), n - 3, flag + 1);
+        if (arr[i] + arr[i + 1] == arr[j]) {
+            if (j - i == 2)
+                return flag + 1;
+            return palindrome(i + 2, j - 1, flag + 1);
         }
 
-        if(arr[0] == arr[n - 1] + arr[n - 2]){
-            if(arr.length == 3) return flag + 1;
-            return palindrome(Arrays.copyOfRange(arr, 1, n - 2), n - 3, flag + 1);
+        if (arr[i] == arr[j - 1] + arr[j]) {
+            if (j - i == 2)
+                return flag + 1;
+            return palindrome(i + 1, j - 2, flag + 1);
         }
 
-        if(arr[0] + arr[1] == arr[n - 1] + arr[n - 2]){
-            if(arr.length == 4) return flag + 2;
-            return palindrome(Arrays.copyOfRange(arr, 2, n - 2), n - 4, flag + 2);
+        if (arr[i] + arr[i + 1] == arr[j - 1] + arr[j]) {
+            if (j - i == 3)
+                return flag + 2;
+            return palindrome(i + 2, j - 2, flag + 2);
         }
 
         return flag;
-    } 
+    }
+
 }
