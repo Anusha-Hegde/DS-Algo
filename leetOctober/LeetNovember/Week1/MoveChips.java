@@ -1,4 +1,4 @@
-package leetOctober.LeetNovember;
+package leetOctober.LeetNovember.Week1;
 
 /**
  * We have n chips, where the position of the ith chip is position[i].

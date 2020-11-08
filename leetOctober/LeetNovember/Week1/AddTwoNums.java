@@ -1,4 +1,4 @@
-package leetOctober.LeetNovember;
+package leetOctober.LeetNovember.Week1;
 
 import java.util.Stack;
 

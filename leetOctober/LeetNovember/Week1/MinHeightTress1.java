@@ -1,4 +1,4 @@
-package leetOctober.LeetNovember;
+package leetOctober.LeetNovember.Week1;
 /**
  * Given a tree of n nodes labelled from 0 to n - 1, and an array of n - 1 edges where 
  * edges[i] = [ai, bi] indicates that there is an undirected edge between the two nodes ai and bi in the tree, 
