@@ -20,38 +20,31 @@ import java.util.*;
  *      TreeNode(int val, TreeNode left, TreeNode right) { this.val = val; this.left = left; this.right = right; } }
  */
 
- 
+
 class Solution {
+
+    int res = 0;
     
-    int res;
     public int maxAncestorDiff(TreeNode root) {
-        res = Integer.MIN_VALUE;
         dfs(root);
         return res;
     }
-    public List<Integer> dfs(TreeNode node){
-        List<Integer> temp_res = new ArrayList<>();
-        List<Integer> temp;
-        int mini = Integer.MAX_VALUE;
-        int maxi = Integer.MIN_VALUE;
-        int t_res;
-        if(node.right != null){
-            temp = dfs(node.right);
-            t_res = Math.max(Math.abs(node.val - temp.get(0)), Math.abs(node.val - temp.get(1)));
-            res = Math.max(res, t_res);
-            mini = Math.min(mini, temp.get(0));
-            maxi = Math.max(maxi, temp.get(1));
-        }
-        if(node.left != null){
-            temp = dfs(node.left);
-            t_res = Math.max(Math.abs(node.val - temp.get(0)), Math.abs(node.val - temp.get(1)));
-            res = Math.max(res, t_res);
-            mini = Math.min(mini, temp.get(0));
-            maxi = Math.max(maxi, temp.get(1));
-        }
-        temp_res.add(Math.min(mini, node.val));
-        temp_res.add(Math.max(maxi, node.val));
-        return temp_res;
+    
+    int[] dfs(TreeNode node){
+        
+        if(node == null) return new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE};
+        
+        if(node.left == null && node.right == null) return new int[]{node.val, node.val};
+        
+        int[] right = dfs(node.right);
+        int[] left = dfs(node.left);
+        
+        int min = Math.min(left[0], right[0]);
+        int max = Math.max(left[1], right[1]);
+        
+        res = Math.max(res, Math.max(Math.abs(node.val - min), Math.abs(node.val - max)));
+        
+        return new int[]{Math.min(min, node.val), Math.max(max, node.val)};
         
     }
 }
