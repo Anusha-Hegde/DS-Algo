@@ -29,6 +29,9 @@ public class pigs {
         while(Math.pow(minutesToTest/minutesToDie + 1, pigs) < buckets) pigs++;
         return pigs;
     }
+    public static void main(String[] args) {
+        System.out.println("hello");
+    }
 }
 
 /**
