@@ -16,7 +16,6 @@ for i in range(1, t + 1):
             else: res1 += int(t / 2) * (5 ** (ll - j - 1))
         if (t % 2) == (j % 2): flag = 0
         res1 += (5 ** (ll - j - 1))
-    if flag and (t % 2) != (j % 2): res1 += 1
 
 
     #   right part
@@ -33,5 +32,4 @@ for i in range(1, t + 1):
 
 
     #   result part
-    print(res1, res2)
     print("Case #" + str(i) + ": " + str(res2 - res1))
