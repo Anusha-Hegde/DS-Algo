@@ -1,4 +1,4 @@
-package leetOctober.LeetDecmeber;
+package leetOctober.LeetDecmeber.week1;
 
 /**
  * Given the root of a binary tree, return its maximum depth.
