@@ -2,6 +2,8 @@ package leetOctober.LeetDecmeber.week1;
 
 import java.util.Random;
 
+import leetOctober.LeetDecmeber.ListNode;
+
 /**
  * 
  * Given a singly linked list, return a random node's value from the linked

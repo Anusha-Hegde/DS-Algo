@@ -1,4 +1,4 @@
-package leetOctober.LeetDecmeber.week1;
+package leetOctober.LeetDecmeber;
 
 public class Node {
     public int val;
