@@ -56,3 +56,33 @@ public class BinTree {
         return (right || left);
     }
 }
+
+/**
+ * 
+ * class Solution {
+    public TreeNode lcaDeepestLeaves(TreeNode root) {
+       if (root == null) {
+           return null;
+       }
+        
+        int leftDepth = depth(root.left);
+        int rightDepth = depth(root.right);
+        
+        if (leftDepth == rightDepth) {
+            return root;
+        } else if (leftDepth > rightDepth) {
+            return lcaDeepestLeaves(root.left);
+        }
+        
+        return lcaDeepestLeaves(root.right);
+    }
+    
+    private int depth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        
+        return 1 + Math.max(depth(root.left), depth(root.right));
+    }
+}
+ */
